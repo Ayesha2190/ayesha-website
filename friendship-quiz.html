@@ -1,132 +1,95 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fun Friendship Quiz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friendship Quiz for Ayesha 💕</title>
   <style>
-    :root{ --bg:#f0f8ff; --card:#fff; --accent:#4CAF50; --muted:#666; }
-    body{font-family: Arial, Helvetica, sans-serif; background:var(--bg); margin:0; padding:30px; display:flex; align-items:center; justify-content:center; min-height:100vh}
-    .card{width:100%; max-width:700px; background:var(--card); border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,0.12); padding:28px}
-    h1{margin:0 0 10px; text-align:center}
-    p.lead{color:var(--muted); text-align:center; margin-top:0}
-    .question{margin:18px 0; padding:12px; border-radius:8px; background:#fafafa}
-    .q-title{font-weight:600; margin-bottom:8px}
-    .options label{display:block; margin:6px 0; padding:8px 10px; border-radius:6px; cursor:pointer; border:1px solid transparent}
-    .options input{margin-right:10px}
-    .options label:hover{background:#f2fff2}
-    .btns{display:flex; gap:10px; justify-content:center; margin-top:18px}
-    button{background:var(--accent); color:white; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; font-weight:600}
-    button.ghost{background:#eee; color:#333}
-    #result{margin-top:18px; text-align:center; font-size:18px; font-weight:700}
-    .small{font-size:13px; color:var(--muted); text-align:center; margin-top:8px}
-    @media(max-width:520px){ .card{padding:18px} }
+    body {
+      font-family: Arial, sans-serif;
+      background: #fdf6f9;
+      text-align: center;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      color: #d63384;
+    }
+    .question {
+      margin: 20px 0;
+      font-weight: bold;
+      color: #444;
+    }
+    button {
+      background: #ff80b5;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #d63384;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #222;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Friendship Fun Quiz 🎉</h1>
-    <p class="lead">Answer for your friend — choose the option that fits best. Be honest and have fun!</p><form id="quiz">
-  <div class="question" data-q="1">
-    <div class="q-title">1) What's their go-to snack?</div>
-    <div class="options">
-      <label><input type="radio" name="q1" value="0"> Healthy salad (boring? 😅)</label>
-      <label><input type="radio" name="q1" value="2"> Chips / Fries (the crunchy heart)</label>
-      <label><input type="radio" name="q1" value="3"> Chocolate / Dessert lover 🍫</label>
-      <label><input type="radio" name="q1" value="1"> Anything free — food lover</label>
-    </div>
-  </div>
+  <h1>💖 Friendship Quiz for Ayesha 💖</h1>
+  <p>See how well you know Ayesha! Answer these fun questions 👇</p>  <div id="quiz"></div>
+  <button onclick="checkAnswers()">Submit Quiz ✅</button>  <div id="result"></div>  <script>
+    const quizData = [
+      { q: "Ayesha's favorite hobby?", options: ["Reading", "Scrolling reels", "Singing"], answer: "Scrolling reels" },
+      { q: "Ayesha's favorite fruit?", options: ["Mango", "Apple", "Dates"], answer: "Dates" },
+      { q: "Ayesha's favorite food?", options: ["Biryani", "Chinese dishes", "Burger"], answer: "Chinese dishes" },
+      { q: "Ayesha's favorite drink?", options: ["Juice", "Milkshake", "Tea"], answer: "Milkshake" },
+      { q: "Ayesha's favorite colors?", options: ["Red & Black", "Pale blue & Pink", "Green"], answer: "Pale blue & Pink" },
+      { q: "Ayesha's favorite travel ride?", options: ["Car", "Bike", "Bus"], answer: "Bike" },
+      { q: "Ayesha's favorite season?", options: ["Summer", "Winter", "Spring"], answer: "Winter" },
+      { q: "Ayesha's favorite movie type?", options: ["Action", "Romantic", "Comedy"], answer: "Comedy" },
+      { q: "Ayesha's favorite time of day?", options: ["Morning", "Afternoon", "Night 🌃"], answer: "Night 🌃" },
+      { q: "Ayesha's favorite dessert?", options: ["Ice cream", "Chocolate cakes 🎂", "Donuts"], answer: "Chocolate cakes 🎂" }
+    ];
 
-  <div class="question" data-q="2">
-    <div class="q-title">2) If they were an animal, they would be:</div>
-    <div class="options">
-      <label><input type="radio" name="q2" value="1"> Owl (wise & quiet)</label>
-      <label><input type="radio" name="q2" value="3"> Monkey (mischievous & funny)</label>
-      <label><input type="radio" name="q2" value="2"> Dog (loyal & energetic)</label>
-      <label><input type="radio" name="q2" value="0"> Cat (independent & dramatic)</label>
-    </div>
-  </div>
+    const quizContainer = document.getElementById("quiz");
 
-  <div class="question" data-q="3">
-    <div class="q-title">3) Who replies the slowest in the group chat?</div>
-    <div class="options">
-      <label><input type="radio" name="q3" value="0"> The one who "saw" it 😴</label>
-      <label><input type="radio" name="q3" value="3"> The late-night philosopher (texts after midnight)</label>
-      <label><input type="radio" name="q3" value="2"> The emoji queen/king 👑</label>
-      <label><input type="radio" name="q3" value="1"> The one always typing... then disappears</label>
-    </div>
-  </div>
-
-  <div class="question" data-q="4">
-    <div class="q-title">4) Their secret talent is probably:</div>
-    <div class="options">
-      <label><input type="radio" name="q4" value="2"> Dancing like nobody's watching</label>
-      <label><input type="radio" name="q4" value="3"> Making everyone laugh</label>
-      <label><input type="radio" name="q4" value="1"> Cooking magic meals</label>
-      <label><input type="radio" name="q4" value="0"> Sleeping anywhere, anytime 😴</label>
-    </div>
-  </div>
-
-  <div class="question" data-q="5">
-    <div class="q-title">5) What would they most likely do on a free weekend?</div>
-    <div class="options">
-      <label><input type="radio" name="q5" value="1"> Go shopping</label>
-      <label><input type="radio" name="q5" value="3"> Plan a surprise for friends</label>
-      <label><input type="radio" name="q5" value="2"> Binge-watch series</label>
-      <label><input type="radio" name="q5" value="0"> Go on a quiet nature walk</label>
-    </div>
-  </div>
-
-  <div class="btns">
-    <button type="button" id="submitBtn">Get Result</button>
-    <button type="button" id="resetBtn" class="ghost">Reset</button>
-  </div>
-
-  <div id="result"></div>
-  <div class="small">Tip: Share this page with a friend and compare results! 💕</div>
-</form>
-
-  </div>  <script>
-    const submitBtn = document.getElementById('submitBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const resultDiv = document.getElementById('result');
-    const form = document.getElementById('quiz');
-
-    function calculateScore() {
-      let total = 0;
-      // there are 5 questions q1..q5
-      for (let i = 1; i <= 5; i++) {
-        const val = form['q'+i].value;
-        if (!val) return null; // unanswered
-        total += Number(val);
-      }
-      return total;
-    }
-
-    function getMessage(score) {
-      // score ranges approx 0..15
-      if (score >= 13) return {title: 'Bestie Expert 🎯', text: 'You know them like the back of your hand — soulmate-level friend!'};
-      if (score >= 9) return {title: 'Friendship Pro 😊', text: 'You and your friend are in sync — lots of happy memories!'};
-      if (score >= 5) return {title: 'Careful Observer 🤔', text: 'You know many things, but there are some surprises left to discover.'};
-      return {title: 'New Friend Alert 🤭', text: 'You might need more hangouts to unlock the secrets — plan a fun day!'};
-    }
-
-    submitBtn.addEventListener('click', () => {
-      const score = calculateScore();
-      if (score === null) {
-        resultDiv.innerHTML = 'Please answer all questions first. 😊';
-        resultDiv.style.color = '#b33';
-        return;
-      }
-
-      const msg = getMessage(score);
-      // fun personalized message + small emoji reactions
-      resultDiv.style.color = '#111';
-      resultDiv.innerHTML = `<div style="font-size:20px; font-weight:800">${msg.title}</div><div style="margin-top:6px; font-weight:600">${msg.text}</div><div style="margin-top:10px; color:var(--muted)">Score: ${score} / 15</div>`;
+    quizData.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `<p>${index + 1}. ${item.q}</p>`;
+      item.options.forEach(opt => {
+        div.innerHTML += `<label><input type='radio' name='q${index}' value='${opt}'> ${opt}</label><br>`;
+      });
+      quizContainer.appendChild(div);
     });
 
-    resetBtn.addEventListener('click', () => {
-      form.reset();
-      resultDiv.innerHTML = '';
-    });
+    function checkAnswers() {
+      let score = 0;
+      quizData.forEach((item, index) => {
+        const answer = document.querySelector(`input[name='q${index}']:checked`);
+        if (answer && answer.value === item.answer) {
+          score++;
+        }
+      });
+
+      let message = "";
+      if (score === quizData.length) {
+        message = "🎉 Wah! Tum Ayesha ke Super Bestie ho! 💕";
+      } else if (score >= 7) {
+        message = "😎 Tum Ayesha ko bohot ache se jaante ho!";
+      } else if (score >= 4) {
+        message = "🙂 Tumhe Ayesha ke baare me aur jaan’ne ki zarurat hai!";
+      } else {
+        message = "😂 Lagta hai tumne guess hi kiya hai!";
+      }
+
+      document.getElementById("result").innerHTML = `You scored ${score}/${quizData.length}. <br> ${message}`;
+    }
   </script></body>
 </html>
