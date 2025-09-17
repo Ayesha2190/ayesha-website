@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friendship Quiz for Ayesha 💕</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fdf6f9;
+      text-align: center;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      color: #d63384;
+    }
+    .question {
+      margin: 20px 0;
+      font-weight: bold;
+      color: #444;
+    }
+    button {
+      background: #ff80b5;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #d63384;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Friendship Quiz for Ayesha 💖</h1>
+  <p>See how well you know Ayesha! Answer these fun questions 👇</p>  <div id="quiz"></div>
+  <button onclick="checkAnswers()">Submit Quiz ✅</button>  <div id="result"></div>  <script>
+    const quizData = [
+      { q: "Ayesha's favorite hobby?", options: ["Reading", "Scrolling reels", "Singing"], answer: "Scrolling reels" },
+      { q: "Ayesha's favorite fruit?", options: ["Mango", "Apple", "Dates"], answer: "Dates" },
+      { q: "Ayesha's favorite food?", options: ["Biryani", "Chinese dishes", "Burger"], answer: "Chinese dishes" },
+      { q: "Ayesha's favorite drink?", options: ["Juice", "Milkshake", "Tea"], answer: "Milkshake" },
+      { q: "Ayesha's favorite colors?", options: ["Red & Black", "Pale blue & Pink", "Green"], answer: "Pale blue & Pink" },
+      { q: "Ayesha's favorite travel ride?", options: ["Car", "Bike", "Bus"], answer: "Bike" },
+      { q: "Ayesha's favorite season?", options: ["Summer", "Winter", "Spring"], answer: "Winter" },
+      { q: "Ayesha's favorite movie type?", options: ["Action", "Romantic", "Comedy"], answer: "Comedy" },
+      { q: "Ayesha's favorite time of day?", options: ["Morning", "Afternoon", "Night 🌃"], answer: "Night 🌃" },
+      { q: "Ayesha's favorite dessert?", options: ["Ice cream", "Chocolate cakes 🎂", "Donuts"], answer: "Chocolate cakes 🎂" }
+    ];
+
+    const quizContainer = document.getElementById("quiz");
+
+    quizData.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `<p>${index + 1}. ${item.q}</p>`;
+      item.options.forEach(opt => {
+        div.innerHTML += `<label><input type='radio' name='q${index}' value='${opt}'> ${opt}</label><br>`;
+      });
+      quizContainer.appendChild(div);
+    });
+
+    function checkAnswers() {
+      let score = 0;
+      quizData.forEach((item, index) => {
+        const answer = document.querySelector(`input[name='q${index}']:checked`);
+        if (answer && answer.value === item.answer) {
+          score++;
+        }
+      });
+
+      let message = "";
+      if (score === quizData.length) {
+        message = "🎉 Wah! Tum Ayesha ke Super Bestie ho! 💕";
+      } else if (score >= 7) {
+        message = "😎 Tum Ayesha ko bohot ache se jaante ho!";
+      } else if (score >= 4) {
+        message = "🙂 Tumhe Ayesha ke baare me aur jaan’ne ki zarurat hai!";
+      } else {
+        message = "😂 Lagta hai tumne guess hi kiya hai!";
+      }
+
+      document.getElementById("result").innerHTML = `You scored ${score}/${quizData.length}. <br> ${message}`;
+    }
+  </script></body>
+</html>
