@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fun Friendship Quiz</title>
+  <style>
+    :root{ --bg:#f0f8ff; --card:#fff; --accent:#4CAF50; --muted:#666; }
+    body{font-family: Arial, Helvetica, sans-serif; background:var(--bg); margin:0; padding:30px; display:flex; align-items:center; justify-content:center; min-height:100vh}
+    .card{width:100%; max-width:700px; background:var(--card); border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,0.12); padding:28px}
+    h1{margin:0 0 10px; text-align:center}
+    p.lead{color:var(--muted); text-align:center; margin-top:0}
+    .question{margin:18px 0; padding:12px; border-radius:8px; background:#fafafa}
+    .q-title{font-weight:600; margin-bottom:8px}
+    .options label{display:block; margin:6px 0; padding:8px 10px; border-radius:6px; cursor:pointer; border:1px solid transparent}
+    .options input{margin-right:10px}
+    .options label:hover{background:#f2fff2}
+    .btns{display:flex; gap:10px; justify-content:center; margin-top:18px}
+    button{background:var(--accent); color:white; border:none; padding:10px 14px; border-radius:8px; cursor:pointer; font-weight:600}
+    button.ghost{background:#eee; color:#333}
+    #result{margin-top:18px; text-align:center; font-size:18px; font-weight:700}
+    .small{font-size:13px; color:var(--muted); text-align:center; margin-top:8px}
+    @media(max-width:520px){ .card{padding:18px} }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Friendship Fun Quiz 🎉</h1>
+    <p class="lead">Answer for your friend — choose the option that fits best. Be honest and have fun!</p><form id="quiz">
+  <div class="question" data-q="1">
+    <div class="q-title">1) What's their go-to snack?</div>
+    <div class="options">
+      <label><input type="radio" name="q1" value="0"> Healthy salad (boring? 😅)</label>
+      <label><input type="radio" name="q1" value="2"> Chips / Fries (the crunchy heart)</label>
+      <label><input type="radio" name="q1" value="3"> Chocolate / Dessert lover 🍫</label>
+      <label><input type="radio" name="q1" value="1"> Anything free — food lover</label>
+    </div>
+  </div>
+
+  <div class="question" data-q="2">
+    <div class="q-title">2) If they were an animal, they would be:</div>
+    <div class="options">
+      <label><input type="radio" name="q2" value="1"> Owl (wise & quiet)</label>
+      <label><input type="radio" name="q2" value="3"> Monkey (mischievous & funny)</label>
+      <label><input type="radio" name="q2" value="2"> Dog (loyal & energetic)</label>
+      <label><input type="radio" name="q2" value="0"> Cat (independent & dramatic)</label>
+    </div>
+  </div>
+
+  <div class="question" data-q="3">
+    <div class="q-title">3) Who replies the slowest in the group chat?</div>
+    <div class="options">
+      <label><input type="radio" name="q3" value="0"> The one who "saw" it 😴</label>
+      <label><input type="radio" name="q3" value="3"> The late-night philosopher (texts after midnight)</label>
+      <label><input type="radio" name="q3" value="2"> The emoji queen/king 👑</label>
+      <label><input type="radio" name="q3" value="1"> The one always typing... then disappears</label>
+    </div>
+  </div>
+
+  <div class="question" data-q="4">
+    <div class="q-title">4) Their secret talent is probably:</div>
+    <div class="options">
+      <label><input type="radio" name="q4" value="2"> Dancing like nobody's watching</label>
+      <label><input type="radio" name="q4" value="3"> Making everyone laugh</label>
+      <label><input type="radio" name="q4" value="1"> Cooking magic meals</label>
+      <label><input type="radio" name="q4" value="0"> Sleeping anywhere, anytime 😴</label>
+    </div>
+  </div>
+
+  <div class="question" data-q="5">
+    <div class="q-title">5) What would they most likely do on a free weekend?</div>
+    <div class="options">
+      <label><input type="radio" name="q5" value="1"> Go shopping</label>
+      <label><input type="radio" name="q5" value="3"> Plan a surprise for friends</label>
+      <label><input type="radio" name="q5" value="2"> Binge-watch series</label>
+      <label><input type="radio" name="q5" value="0"> Go on a quiet nature walk</label>
+    </div>
+  </div>
+
+  <div class="btns">
+    <button type="button" id="submitBtn">Get Result</button>
+    <button type="button" id="resetBtn" class="ghost">Reset</button>
+  </div>
+
+  <div id="result"></div>
+  <div class="small">Tip: Share this page with a friend and compare results! 💕</div>
+</form>
+
+  </div>  <script>
+    const submitBtn = document.getElementById('submitBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const resultDiv = document.getElementById('result');
+    const form = document.getElementById('quiz');
+
+    function calculateScore() {
+      let total = 0;
+      // there are 5 questions q1..q5
+      for (let i = 1; i <= 5; i++) {
+        const val = form['q'+i].value;
+        if (!val) return null; // unanswered
+        total += Number(val);
+      }
+      return total;
+    }
+
+    function getMessage(score) {
+      // score ranges approx 0..15
+      if (score >= 13) return {title: 'Bestie Expert 🎯', text: 'You know them like the back of your hand — soulmate-level friend!'};
+      if (score >= 9) return {title: 'Friendship Pro 😊', text: 'You and your friend are in sync — lots of happy memories!'};
+      if (score >= 5) return {title: 'Careful Observer 🤔', text: 'You know many things, but there are some surprises left to discover.'};
+      return {title: 'New Friend Alert 🤭', text: 'You might need more hangouts to unlock the secrets — plan a fun day!'};
+    }
+
+    submitBtn.addEventListener('click', () => {
+      const score = calculateScore();
+      if (score === null) {
+        resultDiv.innerHTML = 'Please answer all questions first. 😊';
+        resultDiv.style.color = '#b33';
+        return;
+      }
+
+      const msg = getMessage(score);
+      // fun personalized message + small emoji reactions
+      resultDiv.style.color = '#111';
+      resultDiv.innerHTML = `<div style="font-size:20px; font-weight:800">${msg.title}</div><div style="margin-top:6px; font-weight:600">${msg.text}</div><div style="margin-top:10px; color:var(--muted)">Score: ${score} / 15</div>`;
+    });
+
+    resetBtn.addEventListener('click', () => {
+      form.reset();
+      resultDiv.innerHTML = '';
+    });
+  </script></body>
+</html>
