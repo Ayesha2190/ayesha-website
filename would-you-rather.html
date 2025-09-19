@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Would You Rather - Funny Game 😂</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff5f7;
+      text-align: center;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      color: #ff4d94;
+    }
+    .question {
+      margin: 25px 0;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    button {
+      background: #ff80bf;
+      border: none;
+      padding: 10px 20px;
+      margin: 8px;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #d63384;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>😂 Would You Rather Game</h1>
+  <p>Pick one option in each question 👇</p>
+
+  <div id="quiz"></div>
+  <button onclick="showResult()">Submit ✅</button>
+
+  <div id="result"></div>
+
+  <script>
+    const quizData = [
+      { q: "Would you rather watch reels all night 📱 OR sleep 12 hours straight 😴?", options: ["Reels all night 📱", "Sleep 12 hours 😴"] },
+      { q: "Would you rather never use TikTok again 🚫📱 OR never eat chocolate again 🚫🍫?", options: ["No TikTok 🚫📱", "No Chocolate 🚫🍫"] },
+      { q: "Would you rather live without WiFi 📶 OR live without friends 👫?", options: ["Without WiFi 📶", "Without Friends 👫"] },
+      { q: "Would you rather talk only in memes 😂 OR sing everything you say 🎤?", options: ["Talk in memes 😂", "Sing everything 🎤"] }
+    ];
+
+    const quizContainer = document.getElementById("quiz");
+
+    quizData.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `<p>${index + 1}. ${item.q}</p>`;
+      item.options.forEach(opt => {
+        div.innerHTML += `<label><input type='radio' name='q${index}' value='${opt}'> ${opt}</label><br>`;
+      });
+      quizContainer.appendChild(div);
+    });
+
+    function showResult() {
+      let answered = 0;
+      quizData.forEach((item, index) => {
+        const ans = document.querySelector(`input[name='q${index}']:checked`);
+        if (ans) answered++;
+      });
+
+      if (answered < quizData.length) {
+        document.getElementById("result").innerHTML = "👉 Please answer all questions!";
+      } else {
+        document.getElementById("result").innerHTML = "🎉 Thanks for playing! Your choices are super funny 😂";
+      }
+    }
+  </script>
+</body>
+</html>
