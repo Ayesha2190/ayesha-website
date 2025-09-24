@@ -3,59 +3,62 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Romaisa Trending Bracelets — Customize</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <title>Romaisa Trending Bracelets — Customize & Orders</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #fbfbfd;
-      --panel: #ffffff;
-      --muted: #6b7280;
-      --accent: #ff5b8a;
-      --accent-2: #ff9b57;
-      --card-shadow: 0 10px 30px rgba(22,22,60,0.06);
-      --radius: 14px;
+      --bg:#f6f8fb;
+      --panel:#ffffff;
+      --muted:#6b7280;
+      --accent:#ff3d7f;
+      --accent2:#ff9b4a;
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(20,20,50,0.06);
+      --glass: rgba(255,255,255,0.7);
     }
     *{box-sizing:border-box}
-    body{font-family:Montserrat,system-ui,Arial;margin:0;background:linear-gradient(180deg,#ffffff 0%,#fbfbff 100%);color:#111;padding:18px}
-    .wrap{max-width:1100px;margin:10px auto}
-    header{display:flex;align-items:center;gap:14px;justify-content:space-between}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#ffd1e6,#dbe8ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#222}
+    body{font-family:Inter,system-ui,Arial;margin:0;background:linear-gradient(180deg,#fcfdff 0%,#f6f8fb 100%);color:#0f172a;padding:18px}
+    .wrap{max-width:1200px;margin:8px auto}
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:62px;height:62px;border-radius:14px;background:linear-gradient(135deg,#ffd1e6,#dbe8ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#222;font-size:20px}
     .title{font-weight:700;font-size:20px}
-    .tag{color:var(--muted);font-size:13px}
-    .main{display:grid;grid-template-columns:1fr 380px;gap:20px;margin-top:18px}
-    .panel{background:var(--panel);border-radius:var(--radius);padding:16px;box-shadow:var(--card-shadow)}
+    .subtitle{color:var(--muted);font-size:13px}
+    .main{display:grid;grid-template-columns:1fr 420px;gap:20px;margin-top:18px}
+    .panel{background:var(--panel);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
     h1{margin:0;font-size:18px}
     p.lead{color:var(--muted);margin:8px 0 12px 0}
-    .step{margin-top:12px}
-    label.small{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
-    input[type="text"]{width:100%;padding:10px;border-radius:10px;border:1px solid #f0f0f3}
-    .design-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:8px}
-    .design-item{border-radius:10px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:transform .15s,box-shadow .15s}
+    .form-row{margin-top:12px}
+    label.small{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
+    input[type="text"]{width:100%;padding:12px;border-radius:10px;border:1px solid #eef2f6;font-size:15px}
+    .design-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .design-item{border-radius:12px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:transform .14s,box-shadow .14s}
     .design-item img{width:100%;height:120px;object-fit:cover;display:block}
-    .design-item.selected{border-color:var(--accent);transform:translateY(-6px);box-shadow:0 8px 26px rgba(0,0,0,0.08)}
+    .design-item.selected{border-color:var(--accent);transform:translateY(-6px);box-shadow:0 12px 30px rgba(15,15,40,0.08)}
     .colors-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .color-choice{display:flex;align-items:center;gap:8px;padding:6px;border-radius:10px;border:1px solid #f0f0f3;background:#fff;cursor:pointer}
-    .swatch{width:28px;height:28px;border-radius:6px;display:inline-block}
+    .color-choice{display:flex;align-items:center;gap:8px;padding:8px;border-radius:10px;border:1px solid #f0f2f5;background:#fff;cursor:pointer;font-size:14px}
+    .swatch{width:28px;height:28px;border-radius:8px;display:inline-block}
     .muted{color:var(--muted);font-size:13px}
-    .actions{display:flex;gap:8px;margin-top:12px}
-    .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:0;padding:10px 12px;border-radius:10px;color:white;font-weight:700;cursor:pointer}
-    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 10px;border-radius:10px;cursor:pointer}
-    .aside-profile{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
-    .avatar{width:110px;height:110px;border-radius:20px;background:linear-gradient(135deg,#ffd1e6,#dbe8ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:#222;font-size:18px}
-    .summary{width:100%;margin-top:8px;border-radius:12px;padding:12px;background:linear-gradient(180deg,#fff,#fffaf9);border:1px solid rgba(0,0,0,0.03)}
-    .summary h4{margin:0;font-size:15px}
-    .summary .row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
-    .colors-list{display:flex;gap:8px;flex-wrap:wrap}
-    .color-pill{display:flex;gap:8px;align-items:center;padding:6px;border-radius:8px;background:#fff;border:1px solid rgba(0,0,0,0.04)}
-    footer{text-align:center;color:var(--muted);margin-top:18px;font-size:13px}
+    .actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .btn{background:linear-gradient(90deg,var(--accent),var(--accent2));border:0;padding:10px 14px;border-radius:10px;color:white;font-weight:700;cursor:pointer}
+    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:9px 12px;border-radius:10px;cursor:pointer}
+    .aside-profile{display:flex;flex-direction:column;gap:12px;text-align:center}
+    .avatar{width:120px;height:120px;border-radius:18px;background:linear-gradient(135deg,#ffd1e6,#dbe8ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#222;font-size:22px}
+    .summary{margin-top:12px;border-radius:12px;padding:12px;background:linear-gradient(180deg,#fff,#fffaf9);border:1px solid rgba(0,0,0,0.03)}
+    .orders{margin-top:14px;border-radius:12px;padding:12px;background:#fff;border:1px solid rgba(0,0,0,0.04);max-height:360px;overflow:auto}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:8px;border-bottom:1px solid #f2f4f7;text-align:left}
+    th{font-weight:700;background:transparent;position:sticky;top:0;z-index:1}
+    .small{font-size:13px;color:var(--muted)}
     .hint{color:#c03535;font-size:13px;margin-top:8px}
+    footer{text-align:center;color:var(--muted);margin-top:18px;font-size:13px}
     @media(max-width:980px){
       .main{grid-template-columns:1fr}
       .design-grid{grid-template-columns:repeat(3,1fr)}
     }
-    @media(max-width:520px){
+    @media(max-width:560px){
       .design-grid{grid-template-columns:repeat(2,1fr)}
+      .avatar{width:96px;height:96px;font-size:18px}
     }
   </style>
 </head>
@@ -66,52 +69,51 @@
         <div class="logo">R</div>
         <div>
           <div class="title">Romaisa Trending Bracelets</div>
-          <div class="tag">Customize your alphabet bead bracelet — choose style, colors & name</div>
+          <div class="subtitle">Handmade alphabet bead bracelets — fast & friendly orders</div>
         </div>
       </div>
-      <div class="tag">Professional • Mobile-friendly • Easy orders</div>
+      <div class="small">File: <strong>romaisa.trendy.bracelets.html</strong></div>
     </header>
 
     <div class="main">
-      <!-- LEFT: Form -->
+      <!-- LEFT: Order Form -->
       <div class="panel">
-        <h1>Create your bracelet</h1>
-        <p class="lead">Step 1: write name (optional) — Step 2: pick a design — Step 3: pick 2–3 colors — Show summary & Save.</p>
+        <h1>Create & Order</h1>
+        <p class="lead">Step 1: Type name (optional). Step 2: Select design. Step 3: Choose 2–3 colors. Click <strong>Show Summary</strong> to view order and then <strong>Place Order</strong> to register it for Romaisa.</p>
 
         <!-- NAME -->
-        <div class="step">
+        <div class="form-row">
           <label class="small">Customer name (optional)</label>
           <input id="cust-name" type="text" placeholder="Type name here (leave empty for no-name)">
-          <div class="muted" style="margin-top:6px">Leave blank → ₹30 | 1 letter → ₹50 | Full name → ₹80</div>
+          <div class="small" style="margin-top:6px">No name → ₹30 | 1 letter → ₹50 | Full name → ₹80</div>
         </div>
 
         <!-- DESIGNS -->
-        <div class="step">
-          <label class="small">Choose a design</label>
+        <div class="form-row">
+          <label class="small">Choose a design (tap to select)</label>
           <div class="design-grid" id="designGrid">
-            <!-- 5 stylish designs from unsplash/random queries -->
-            <div class="design-item" data-src="https://source.unsplash.com/800x600/?beads,bracelet,handmade,1">
-              <img src="https://source.unsplash.com/800x600/?beads,bracelet,handmade,1" alt="design 1">
+            <div class="design-item" data-src="https://images.unsplash.com/photo-1581574209642-6f9d9d6d1e6f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1">
+              <img src="https://images.unsplash.com/photo-1581574209642-6f9d9d6d1e6f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1" alt="design 1">
             </div>
-            <div class="design-item" data-src="https://source.unsplash.com/800x600/?beaded,bracelet,craft,2">
-              <img src="https://source.unsplash.com/800x600/?beaded,bracelet,craft,2" alt="design 2">
+            <div class="design-item" data-src="https://images.unsplash.com/photo-1585386959984-a4155227c6fa?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=2">
+              <img src="https://images.unsplash.com/photo-1585386959984-a4155227c6fa?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=2" alt="design 2">
             </div>
-            <div class="design-item" data-src="https://source.unsplash.com/800x600/?alphabet,beads,bracelet,3">
-              <img src="https://source.unsplash.com/800x600/?alphabet,beads,bracelet,3" alt="design 3">
+            <div class="design-item" data-src="https://images.unsplash.com/photo-1549575810-6f8f94f5b6b8?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3">
+              <img src="https://images.unsplash.com/photo-1549575810-6f8f94f5b6b8?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3" alt="design 3">
             </div>
-            <div class="design-item" data-src="https://source.unsplash.com/800x600/?colorful,beads,4">
-              <img src="https://source.unsplash.com/800x600/?colorful,beads,4" alt="design 4">
+            <div class="design-item" data-src="https://images.unsplash.com/photo-1544456329-2f6f6d7a9f24?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=4">
+              <img src="https://images.unsplash.com/photo-1544456329-2f6f6d7a9f24?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=4" alt="design 4">
             </div>
-            <div class="design-item" data-src="https://source.unsplash.com/800x600/?trendy,bracelet,5">
-              <img src="https://source.unsplash.com/800x600/?trendy,bracelet,5" alt="design 5">
+            <div class="design-item" data-src="https://images.unsplash.com/photo-1606851092923-ef8f3c6b8f01?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=5">
+              <img src="https://images.unsplash.com/photo-1606851092923-ef8f3c6b8f01?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=5" alt="design 5">
             </div>
           </div>
         </div>
 
         <!-- COLORS -->
-        <div class="step">
+        <div class="form-row">
           <label class="small">Pick 2–3 colors</label>
-          <div id="colorRow" class="colors-row">
+          <div class="colors-row" id="colorRow">
             <label class="color-choice"><input type="checkbox" name="color" value="Blue"> <span class="swatch" style="background:#3b82f6"></span> Blue</label>
             <label class="color-choice"><input type="checkbox" name="color" value="Pink"> <span class="swatch" style="background:#ff79c6"></span> Pink</label>
             <label class="color-choice"><input type="checkbox" name="color" value="White"> <span class="swatch" style="background:#ffffff;border:1px solid #ddd"></span> White</label>
@@ -120,46 +122,48 @@
             <label class="color-choice"><input type="checkbox" name="color" value="Green"> <span class="swatch" style="background:#16a34a"></span> Green</label>
             <label class="color-choice"><input type="checkbox" name="color" value="Golden"> <span class="swatch" style="background:gold"></span> Golden</label>
           </div>
-          <div class="muted" style="margin-top:8px">Select minimum 2, maximum 3 colors.</div>
+          <div class="small" style="margin-top:8px">Select minimum 2, maximum 3 colors.</div>
           <div id="colorHint" class="hint" style="display:none"></div>
         </div>
 
-        <div class="actions" style="margin-top:14px">
-          <button class="btn" onclick="showSummary()">Show Order Summary</button>
+        <div class="actions">
+          <button class="btn" onclick="showSummary()">Show Summary</button>
           <button class="btn-ghost" onclick="resetForm()">Reset</button>
+          <button class="btn-ghost" onclick="downloadAllOrders()">Download Orders (CSV)</button>
         </div>
+
         <div id="formNote" style="margin-top:10px;color:var(--muted);font-size:14px"></div>
       </div>
 
-      <!-- RIGHT: Profile + Summary -->
+      <!-- RIGHT: Seller summary + orders -->
       <aside>
         <div class="panel aside-profile">
-          <div class="avatar">Romaisa</div>
-          <div style="font-weight:700">Romaisa's Beads</div>
-          <div class="muted">Handmade trendy alphabet bracelets</div>
+          <div class="avatar">R</div>
+          <div style="font-weight:800">Romaisa's Beads</div>
+          <div class="muted">Orders received will appear below — ready to prepare.</div>
 
-          <div class="summary" id="orderSummary">
-            <h4>Order Summary</h4>
-            <div id="summaryContent" style="margin-top:8px;color:var(--muted)">No selections yet — fill the form and click "Show Order Summary".</div>
-            <div id="priceRow" class="row" style="margin-top:10px;display:none">
-              <div class="muted">Total Price:</div>
-              <div style="font-weight:700" id="priceText"></div>
-            </div>
-            <div style="margin-top:12px;display:flex;gap:8px;justify-content:center">
-              <button class="btn-ghost" onclick="placeOrder()">Place Order (Show Summary)</button>
+          <div class="summary" id="orderBox">
+            <h4>Current Order (Preview)</h4>
+            <div id="summaryContent" class="small muted" style="margin-top:8px">No selections yet — fill the form and click Show Summary.</div>
+            <div style="margin-top:10px;display:flex;gap:8px;justify-content:center">
+              <button class="btn-ghost" onclick="placeOrder()">Place Order</button>
               <button class="btn-ghost" onclick="downloadSummary()">Save Order</button>
             </div>
           </div>
 
-          <div style="margin-top:12px;text-align:left" class="muted small">
-            <strong>How to order</strong>
-            <ol style="padding-left:18px;margin:6px 0 0 0">
-              <li>Type name (optional)</li>
-              <li>Select a design</li>
-              <li>Pick 2–3 colors</li>
-              <li>Click Show Order Summary → then Save Order</li>
-            </ol>
+          <div class="orders" id="ordersList" aria-live="polite">
+            <strong>Orders for Romaisa</strong>
+            <table id="ordersTable" style="margin-top:8px">
+              <thead>
+                <tr><th style="width:22%;">Time</th><th style="width:18%;">Name</th><th style="width:30%;">Design</th><th style="width:20%;">Colors</th><th style="width:10%;">Price</th></tr>
+              </thead>
+              <tbody id="ordersBody">
+                <!-- orders will append here -->
+              </tbody>
+            </table>
+            <div id="noOrders" class="small muted" style="margin-top:8px">No orders yet.</div>
           </div>
+
         </div>
       </aside>
     </div>
@@ -168,26 +172,26 @@
   </div>
 
   <script>
-    // select design behavior
+    // --- UI: design selection ---
     const designItems = document.querySelectorAll('.design-item');
     let selectedDesign = null;
-    designItems.forEach(it=>{
+    designItems.forEach((it, idx)=>{
       it.addEventListener('click', ()=>{
         designItems.forEach(x=>x.classList.remove('selected'));
         it.classList.add('selected');
-        selectedDesign = it.getAttribute('data-src');
+        selectedDesign = it.getAttribute('data-src') + '';
       });
     });
-
-    // pre-select first design
+    // preselect first
     window.addEventListener('load', ()=>{
       if(designItems.length){
         designItems[0].classList.add('selected');
         selectedDesign = designItems[0].getAttribute('data-src');
       }
+      renderOrders(); // show any saved orders (localStorage)
     });
 
-    // color selection validation (max 3)
+    // --- color validation ---
     document.getElementById('colorRow').addEventListener('change', (e)=>{
       const checked = document.querySelectorAll('input[name="color"]:checked');
       if(checked.length > 3){
@@ -195,7 +199,6 @@
         showTempHint('You can pick up to 3 colors only.');
       }
     });
-
     function getSelectedColors(){
       return Array.from(document.querySelectorAll('input[name="color"]:checked')).map(i=>i.value);
     }
@@ -214,9 +217,10 @@
     function showTempHint(msg){
       const h = document.getElementById('colorHint');
       h.textContent = msg; h.style.display = 'block';
-      setTimeout(()=>h.style.display = 'none', 2200);
+      setTimeout(()=>h.style.display = 'none', 2400);
     }
 
+    // --- build summary ---
     function showSummary(){
       document.getElementById('colorHint').style.display = 'none';
       const name = document.getElementById('cust-name').value || '';
@@ -225,17 +229,16 @@
       if(colors.length > 3){ showTempHint('Please select up to 3 colors.'); return; }
       if(!selectedDesign){ alert('Please select a design.'); return; }
 
-      // build summary content
       const sc = document.getElementById('summaryContent');
-      sc.innerHTML = ''; // clear
+      sc.innerHTML = '';
 
-      // design preview
+      // image preview
       const img = document.createElement('img');
       img.src = selectedDesign;
       img.alt = 'Selected design';
       img.style.width = '100%';
       img.style.borderRadius = '10px';
-      img.style.maxHeight = '160px';
+      img.style.maxHeight = '140px';
       img.style.objectFit = 'cover';
       sc.appendChild(img);
 
@@ -245,17 +248,18 @@
       nameDiv.innerHTML = '<strong>Name:</strong> ' + (name.trim() ? escapeHtml(name.trim()) : '<em>Without name</em>');
       sc.appendChild(nameDiv);
 
-      // colors list
+      // colors
+      const map = {'Blue':'#3b82f6','Pink':'#ff79c6','White':'#ffffff','Red':'#ef4444','Yellow':'#f9d923','Green':'#16a34a','Golden':'gold'};
       const cdiv = document.createElement('div');
       cdiv.style.marginTop = '8px';
       cdiv.innerHTML = '<strong>Colors:</strong>';
       const cl = document.createElement('div');
-      cl.className = 'colors-list';
-      const map = {'Blue':'#3b82f6','Pink':'#ff79c6','White':'#ffffff','Red':'#ef4444','Yellow':'#f9d923','Green':'#16a34a','Golden':'gold'};
+      cl.style.display='flex';cl.style.gap='8px';cl.style.flexWrap='wrap';cl.style.marginTop='6px';
       colors.forEach(c=>{
         const pill = document.createElement('div');
-        pill.className = 'color-pill';
-        pill.innerHTML = '<span style="width:18px;height:18px;border-radius:4px;display:inline-block;background:'+ (map[c]||'#ddd') +';border:'+ (c==='White' ? '1px solid #ddd' : 'none') +';margin-right:8px"></span>' + escapeHtml(c);
+        pill.style.display='flex';pill.style.alignItems='center';pill.style.gap='8px';
+        pill.style.padding='6px';pill.style.borderRadius='8px';pill.style.background='#fff';pill.style.border='1px solid rgba(0,0,0,0.04)';
+        pill.innerHTML = '<span style="width:18px;height:18px;border-radius:4px;display:inline-block;background:'+ (map[c]||'#ddd') +';border:'+ (c==='White'?'1px solid #ddd':'none') +';margin-right:6px"></span>' + escapeHtml(c);
         cl.appendChild(pill);
       });
       cdiv.appendChild(cl);
@@ -263,53 +267,110 @@
 
       // price
       const price = computePrice(name);
-      document.getElementById('priceText').textContent = '₹' + price;
-      document.getElementById('priceRow').style.display = 'flex';
-      document.getElementById('formNote').textContent = 'Summary ready. Click Save Order to download the summary file.';
+      const priceDiv = document.createElement('div');
+      priceDiv.style.marginTop = '10px';
+      priceDiv.innerHTML = '<strong>Total Price:</strong> ₹' + price;
+      sc.appendChild(priceDiv);
+
+      document.getElementById('formNote').textContent = 'Summary ready — click Place Order to register this order for Romaisa (seller).';
     }
 
+    // --- Orders storage (localStorage) ---
     function placeOrder(){
-      // same as showSummary but opens a modal-like overlay
+      // require summary ready
       const sc = document.getElementById('summaryContent').innerHTML;
       if(!sc || sc.includes('No selections yet')){
-        alert('Please complete the form and click Show Order Summary first.');
-        return;
-      }
-      const overlay = document.createElement('div');
-      overlay.style.position='fixed';overlay.style.left=0;overlay.style.top=0;overlay.style.right=0;overlay.style.bottom=0;
-      overlay.style.background='rgba(0,0,0,0.45)';overlay.style.display='flex';overlay.style.alignItems='center';overlay.style.justifyContent='center';overlay.style.zIndex=9999;
-      const box = document.createElement('div');box.style.width='92%';box.style.maxWidth='560px';box.style.background='#fff';box.style.borderRadius='12px';box.style.padding='14px';
-      box.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center"><strong>Order Summary</strong><button id="overlayClose" style="background:transparent;border:0;font-size:20px;cursor:pointer">&times;</button></div>';
-      const content = document.createElement('div');content.style.marginTop='10px';
-      content.innerHTML = sc + '<div style="margin-top:10px"><strong>Total: </strong>' + document.getElementById('priceText').textContent + '</div>';
-      box.appendChild(content);
-      const ok = document.createElement('div');ok.style.textAlign='right';ok.style.marginTop='12px';
-      ok.innerHTML = '<button class="btn" id="doneOK">Close</button>';
-      box.appendChild(ok);
-      overlay.appendChild(box);
-      document.body.appendChild(overlay);
-      document.getElementById('overlayClose').onclick = ()=>overlay.remove();
-      document.getElementById('doneOK').onclick = ()=>overlay.remove();
-    }
-
-    function downloadSummary(){
-      const scHtml = document.getElementById('summaryContent').innerHTML;
-      if(!scHtml || scHtml.includes('No selections yet')){
-        alert('Please complete the form and click Show Order Summary first.');
+        alert('Please complete the form and click Show Summary first.');
         return;
       }
       const name = (document.getElementById('cust-name').value||'').trim();
       const colors = getSelectedColors();
-      const price = document.getElementById('priceText').textContent || '₹-';
-      // create plain text content for save
+      const price = computePrice(name);
+      const design = selectedDesign || '';
+      const time = new Date().toLocaleString();
+
+      // build order object
+      const order = { time, name: name || 'Without name', design, colors, price };
+
+      // save to localStorage (so Romaisa can see on this device)
+      const orders = JSON.parse(localStorage.getItem('rtb_orders_v1') || '[]');
+      orders.unshift(order); // newest first
+      localStorage.setItem('rtb_orders_v1', JSON.stringify(orders));
+
+      // update table UI
+      renderOrders();
+
+      // show modal summary & then clear form
+      showOrderModal(order);
+
+      // clear form for next order
+      clearFormAfterPlace();
+    }
+
+    function renderOrders(){
+      const orders = JSON.parse(localStorage.getItem('rtb_orders_v1') || '[]');
+      const tbody = document.getElementById('ordersBody');
+      tbody.innerHTML = '';
+      if(!orders.length){
+        document.getElementById('noOrders').style.display = 'block';
+      } else {
+        document.getElementById('noOrders').style.display = 'none';
+      }
+      orders.forEach(o=>{
+        const tr = document.createElement('tr');
+        const ttime = document.createElement('td'); ttime.textContent = o.time;
+        const tname = document.createElement('td'); tname.textContent = o.name;
+        const tdesign = document.createElement('td');
+        const im = document.createElement('img'); im.src = o.design; im.alt='design'; im.style.width='100%'; im.style.maxWidth='140px'; im.style.borderRadius='8px';
+        tdesign.appendChild(im);
+        const tcolors = document.createElement('td'); tcolors.textContent = (o.colors || []).join(', ');
+        const tprice = document.createElement('td'); tprice.textContent = '₹' + o.price;
+        tr.appendChild(ttime); tr.appendChild(tname); tr.appendChild(tdesign); tr.appendChild(tcolors); tr.appendChild(tprice);
+        tbody.appendChild(tr);
+      });
+    }
+
+    function showOrderModal(order){
+      const overlay = document.createElement('div');
+      overlay.style.position='fixed';overlay.style.left=0;overlay.style.top=0;overlay.style.right=0;overlay.style.bottom=0;
+      overlay.style.background='rgba(0,0,0,0.45)';overlay.style.display='flex';overlay.style.alignItems='center';overlay.style.justifyContent='center';overlay.style.zIndex=9999;
+      const box = document.createElement('div');box.style.width='92%';box.style.maxWidth='560px';box.style.background='#fff';box.style.borderRadius='12px';box.style.padding='16px';
+      box.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center"><strong>Order Saved</strong><button id="ovClose" style="background:transparent;border:0;font-size:22px;cursor:pointer">&times;</button></div>';
+      const content = document.createElement('div'); content.style.marginTop='10px';
+      content.innerHTML = '<div><strong>Customer:</strong> ' + escapeHtml(order.name) + '</div><div style="margin-top:6px"><strong>Colors:</strong> ' + (order.colors.join(', ') || '-') + '</div><div style="margin-top:6px"><strong>Price:</strong> ₹' + order.price + '</div><div style="margin-top:8px"><img src="' + order.design + '" alt="design" style="width:100%;border-radius:8px;object-fit:cover"></div>';
+      box.appendChild(content);
+      const ok = document.createElement('div'); ok.style.marginTop='12px'; ok.style.textAlign='right';
+      ok.innerHTML = '<button class="btn" id="okDone">Done</button>';
+      box.appendChild(ok);
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
+      document.getElementById('ovClose').onclick = ()=>overlay.remove();
+      document.getElementById('okDone').onclick = ()=>overlay.remove();
+    }
+
+    function clearFormAfterPlace(){
+      document.getElementById('cust-name').value = '';
+      document.querySelectorAll('input[name="color"]').forEach(c=>c.checked=false);
+      designItems.forEach(x=>x.classList.remove('selected'));
+      if(designItems.length){ designItems[0].classList.add('selected'); selectedDesign = designItems[0].getAttribute('data-src'); }
+      document.getElementById('summaryContent').textContent = 'No selections yet — fill the form and click "Show Summary".';
+      document.getElementById('formNote').textContent = '';
+      document.getElementById('colorHint').style.display = 'none';
+    }
+
+    function downloadSummary(){
+      const scHtml = document.getElementById('summaryContent').innerHTML;
+      if(!scHtml || scHtml.includes('No selections yet')){ alert('Please complete the form and click Show Summary first.'); return; }
+      const name = (document.getElementById('cust-name').value||'').trim();
+      const colors = getSelectedColors();
+      const price = '₹' + computePrice(name);
       let text = 'Romaisa Trending Bracelets - Order Summary\\n';
       text += '----------------------------------------\\n';
       text += 'Customer name: ' + (name || 'Without name') + '\\n';
-      text += 'Selected design URL: ' + (selectedDesign || 'None') + '\\n';
+      text += 'Selected design URL: ' + (selectedDesign || '-') + '\\n';
       text += 'Colors: ' + (colors.join(', ') || '-') + '\\n';
       text += 'Total Price: ' + price + '\\n';
       text += 'Order created: ' + new Date().toLocaleString() + '\\n';
-      // download as txt
       const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -320,16 +381,24 @@
       URL.revokeObjectURL(url);
     }
 
-    function resetForm(){
-      document.getElementById('cust-name').value = '';
-      document.querySelectorAll('input[name="color"]').forEach(c=>c.checked=false);
-      designItems.forEach(x=>x.classList.remove('selected'));
-      if(designItems.length){ designItems[0].classList.add('selected'); selectedDesign = designItems[0].getAttribute('data-src'); }
-      document.getElementById('summaryContent').textContent = 'No selections yet — fill the form and click "Show Order Summary".';
-      document.getElementById('priceRow').style.display = 'none';
-      document.getElementById('formNote').textContent = '';
-      document.getElementById('colorHint').style.display = 'none';
+    // download all orders as CSV (for Romaisa)
+    function downloadAllOrders(){
+      const orders = JSON.parse(localStorage.getItem('rtb_orders_v1') || '[]');
+      if(!orders.length){ alert('No orders to download.'); return; }
+      const rows = [['Time','Customer','DesignURL','Colors','Price']];
+      orders.forEach(o=>{
+        rows.push([o.time, o.name, o.design, (o.colors||[]).join('; '), o.price]);
+      });
+      const csv = rows.map(r => r.map(cell => '"' + String(cell).replace(/"/g,'""') + '"').join(',')).join('\\n');
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'romaisa_orders_' + Date.now() + '.csv';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
     }
+
   </script>
 </body>
 </html>
